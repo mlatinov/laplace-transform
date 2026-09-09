@@ -1,13 +1,16 @@
-name = "transformation"
+name = "laplace"
 version = "0.1.0"
 exports = [
     "center",
     "scale",
+    "scale_fixed",
     "standardize",
+    "standardize_fixed",
     "center_at",
     "scale_at",
     "rescale",
     "min_max",
+    "min_max_fixed",
     "power_transform",
     "box_cox",
     "yeojohnson",
