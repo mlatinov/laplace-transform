@@ -1,4 +1,4 @@
-name = "laplace"
+name = "transformations"
 version = "0.1.0"
 exports = [
     "center",
