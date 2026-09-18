@@ -18,7 +18,7 @@ Functions included:
 // @brief Removes the sample mean from each observation.
 // @param x Vector of length N.
 // @return Vector of length N centered around zero.
-// @example centered_x = transformation::center(x);
+// @example centered_x = transformations::center(x);
 // @math
 // x_i^{*} = x_i - \bar{x}
 vector center(vector x){
@@ -29,7 +29,7 @@ vector center(vector x){
 // @brief Scales a variable relative to its sample standard deviation.
 // @param x Vector of length N.
 // @return Vector of length N scaled by the sample standard deviation.
-// @example scaled_x = transformation::scale(x);
+// @example scaled_x = transformations::scale(x);
 // @math
 // x_i^{*} = \frac{x_i}{s_x}
 vector scale(vector x){
@@ -41,7 +41,7 @@ vector scale(vector x){
 // @param x Vector of length N.
 // @param sd real, supplied population standard deviation.
 // @return Vector of length N scaled by the provided standard deviation.
-// @example scaled_fixed_x = transformation::scale_fixed(x, 1);
+// @example scaled_fixed_x = transformations::scale_fixed(x, 1);
 // @math
 // x_i^{*} = \frac{x_i}{s_x}
 vector scale_fixed(vector x, real sd){
@@ -52,7 +52,7 @@ vector scale_fixed(vector x, real sd){
 // @brief Standardizes a variable by subtracting its mean and dividing by its standard deviation.
 // @param x Vector of length N.
 // @return Vector of length N with mean approximately zero and standard deviation one.
-// @example standard_x = transformation::standardize(x);
+// @example standard_x = transformations::standardize(x);
 // @math
 // x_i^{*} = \frac{x_i - \bar{x}}{s_x}
 vector standardize(vector x){
@@ -65,7 +65,7 @@ vector standardize(vector x){
 // @param mean real, provided population mean.
 // @param sd real, provided population sd.
 // @return Vector of length N standardize by the provided mean and standard deviation.
-// @example standard_fixed_x = transformation::standardize_fixed(x, 0, 1);
+// @example standard_fixed_x = transformations::standardize_fixed(x, 0, 1);
 // @math
 // x_i^{*} = \frac{x_i - \bar{x}}{s_x}
 vector standardize_fixed(vector x, real mean, real sd){
@@ -77,7 +77,7 @@ vector standardize_fixed(vector x, real mean, real sd){
 // @param x Vector of length N.
 // @param c Real reference value used as the center.
 // @return Vector of length N centered around c.
-// @example centered_x = transformation::center_at(x, 10);
+// @example centered_x = transformations::center_at(x, 10);
 // @math
 // x_i^{*} = x_i - c
 vector center_at(vector x, real c){
@@ -89,7 +89,7 @@ vector center_at(vector x, real c){
 // @param x Vector of length N.
 // @param c Real reference scale.
 // @return Vector of length N divided by the reference scale.
-// @example scaled_x = transformation::scale_at(x, 10);
+// @example scaled_x = transformations::scale_at(x, 10);
 // @math
 // x_i^{*} = \frac{x_i}{c}
 vector scale_at(vector x, real c){
@@ -102,7 +102,7 @@ vector scale_at(vector x, real c){
 // @param a Real lower bound of the target interval.
 // @param b Real upper bound of the target interval.
 // @return Vector of length N mapped from [min(x), max(x)] to [a, b].
-// @example mapped_x = transformation::rescale(x, 0, 10);
+// @example mapped_x = transformations::rescale(x, 0, 10);
 // @math
 // x_i^{*} = a + (b-a)\frac{x_i-\min(x)}{\max(x)-\min(x)}
 vector rescale(vector x, real a, real b) {
@@ -119,7 +119,7 @@ vector rescale(vector x, real a, real b) {
 // @brief Maps the minimum and maximum of a variable to 0 and 1 respectively.
 // @param x Vector of length N.
 // @return Vector of length N scaled to the interval [0, 1].
-// @example mapped_x = transformation::min_max(x);
+// @example mapped_x = transformations::min_max(x);
 // @math
 // x_i^{*} = \frac{x_i-\min(x)}{\max(x)-\min(x)}
 vector min_max(vector x){
@@ -132,7 +132,7 @@ vector min_max(vector x){
 // @param min real.
 // @param max real.
 // @return Vector of length N.
-// @example mapped_x = transformation::min_max(x);
+// @example mapped_x = transformations::min_max(x);
 // @math
 // x_i^{*} = \frac{x_i-\min(x)}{\max(x)-\min(x)}
 vector min_max_fixed(vector x, real min, real max){
@@ -156,7 +156,7 @@ Functions included:
 // @param x Vector of length N. Values must be positive.
 // @param lambda Real power controlling the transformation.
 // @return Vector of length N containing the power-transformed values.
-// @example power_x = transformation::power_transform(x, lambda);
+// @example power_x = transformations::power_transform(x, lambda);
 // @math
 // T(x_i;\lambda) =
 // \begin{cases}
@@ -184,7 +184,7 @@ vector power_transform(vector x, real lambda){
 // @param x Vector of length N. All values must be strictly positive.
 // @param lambda Real power controlling the transformation.
 // @return Vector of length N containing the Box-Cox transformed values.
-// @example boxcox_x = transformation::box_cox(x, lambda);
+// @example boxcox_x = transformations::box_cox(x, lambda);
 // @math
 // T(x_i;\lambda) =
 // \begin{cases}
@@ -212,7 +212,7 @@ vector box_cox(vector x, real lambda){
 // @param x Vector of length N.
 // @param lambda Real power controlling the transformation.
 // @return Vector of length N containing the Yeo-Johnson transformed values.
-// @example yeojohnson_x = transformation::yeojohnson(x, lambda);
+// @example yeojohnson_x = transformations::yeojohnson(x, lambda);
 // @math
 // T(x_i;\lambda) =
 // \begin{cases}
@@ -290,7 +290,7 @@ int I(real xi, real xj) {
 // @brief Assigns each observation its rank among all observations.
 // @param x Vector of length N.
 // @return Vector containing the rank of each observation. Tied observations receive the same minimum rank.
-// @example ranked_x = transformation::rank(x);
+// @example ranked_x = transformations::rank(x);
 // @math
 // r_i = 1 + \sum_{j=1}^{N} I(x_i,x_j)
 vector rank(vector x) {
@@ -312,7 +312,7 @@ vector rank(vector x) {
 // @brief Converts observation ranks to a relative position on the interval [0, 1].
 // @param x Vector of length N.
 // @return Vector containing the percent rank of each observation.
-// @example percent_rank_x = transformation::percent_rank(x);
+// @example percent_rank_x = transformations::percent_rank(x);
 // @math
 // p_i = \frac{r_i - 1}{N - 1}
 vector percent_rank(vector x){
@@ -327,7 +327,7 @@ vector percent_rank(vector x){
 // @brief Maps empirical observations into the open interval (0, 1) using their ranks.
 // @param x Vector of length N.
 // @return Vector of empirical probabilities strictly between 0 and 1.
-// @example uniformed_rank_x = transformation::uniformize(x);
+// @example uniformed_rank_x = transformations::uniformize(x);
 // @math
 // u_i = \frac{r_i - \frac{1}{2}}{N}
 vector uniformize(vector x){
@@ -342,7 +342,7 @@ vector uniformize(vector x){
 // @brief Maps empirical ranks onto an approximately standard-normal scale using the inverse standard-normal CDF.
 // @param x Vector of length N.
 // @return Vector of normal-score transformed observations.
-// @example normal_score_x = transformation::normal_score(x);
+// @example normal_score_x = transformations::normal_score(x);
 // @math
 // z_i = \Phi^{-1}\left(\frac{r_i-\frac{1}{2}}{N}\right)
 vector normal_score(vector x){
@@ -367,7 +367,7 @@ bound or above an upper bound to those respective bounds.
 // @param low Real lower bound.
 // @param up Real upper bound.
 // @return Vector of length N with all values restricted to [low, up].
-// @example clipped_x = transformation::clip(x, 0, 100);
+// @example clipped_x = transformations::clip(x, 0, 100);
 // @math
 // T(x_i) =
 // \begin{cases}
