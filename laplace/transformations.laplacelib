@@ -131,10 +131,10 @@ vector min_max(vector x){
 // @param x Vector of length N.
 // @param min real.
 // @param max real.
-// @return Vector of length N.
-// @example mapped_x = transformations::min_max(x);
+// @return Vector of length N; values between `min` and `max` land in [0, 1].
+// @example mapped_x = transformations::min_max_fixed(x, 0, 100);
 // @math
-// x_i^{*} = \frac{x_i-\min(x)}{\max(x)-\min(x)}
+// x_i^{*} = \frac{x_i-\text{min}}{\text{max}-\text{min}}
 vector min_max_fixed(vector x, real min, real max){
     return (x - min) / (max - min);
 }
